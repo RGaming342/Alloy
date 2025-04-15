@@ -12,14 +12,14 @@
 
 class Lexer{
 	public:
-		Lexer(std::string& str);
+		Lexer();
 		
-		std::vector<Token> lex();
+		std::vector<Token> lex(std::string& str);
 		
 		std::vector<std::string> lines;
 	private:
 		
-		std::string& m_str;
+		std::string m_str;
 		size_t m_index = 0;
 		
 		struct PeekRet{
@@ -35,6 +35,7 @@ class Lexer{
 		bool lexString(uint&,uint&,std::vector<Token>& tokens);
 };
 
+inline Lexer lexer;
 
 
 

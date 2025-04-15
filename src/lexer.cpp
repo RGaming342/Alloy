@@ -3,7 +3,7 @@
 
 
 
-std::vector<std::string> SortTokensByLength(const Map& tokens) {
+std::vector<std::string> SortTokensByLength(const Map<int>& tokens) {
 	std::vector<std::string> sortedTokens;
 	// Extract keys from the map
 	for (const auto& pair : tokens) {
@@ -17,9 +17,10 @@ std::vector<std::string> SortTokensByLength(const Map& tokens) {
 	return sortedTokens;
 }
 
-Lexer::Lexer(std::string& str) : m_str(str) {}
+Lexer::Lexer(){}
 
-std::vector<Token> Lexer::lex() {
+std::vector<Token> Lexer::lex(std::string& str) {
+	m_str = std::move(str);
 	std::istringstream iss(m_str);
 	std::string line;
 	lines.push_back("this should not be seen");
@@ -77,6 +78,7 @@ std::vector<Token> Lexer::lex() {
 		}
 	}
 	m_index = 0;
+	//tokens.push_back({ TokenTypes["Symbol"], "EOF", 0, 0 });
 	return tokens;
 }
 
@@ -100,9 +102,8 @@ Token Lexer::lexIdent(uint& ln,uint& cn) {
 		buf.push_back(inc());
 		cn++;
 	}
-	int tokenType = Tokens[buf];
-	if (tokenType != -1) {
-		return { tokenType, buf, ln, tmp };
+	if (Tokens.has(buf)) {
+		return { Tokens[buf], buf, ln, tmp };
 	}
 	return { TokenTypes["Ident"], buf, ln, tmp };
 }

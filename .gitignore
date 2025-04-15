@@ -11,3 +11,5 @@ src/lexer.o
 test.ll
 test.ay
 main.cpp
+src/parser.o
+include/parser-data.h
