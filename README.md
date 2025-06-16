@@ -22,3 +22,5 @@ Zult is in the very early stages of development.
 
 ### Syntax Interpretation Phase (SIP), (an idea from old ignorent me)
 The Syntax Interpretation Phase (SIP) is a planned feature that will allow syntax customization, enabling the language to mimic other languages or create custom syntax. This feature is a long way from being started in development and represents a future direction for Zult.
+
+Zult is short for Zultanite, a type of gem.
